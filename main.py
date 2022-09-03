@@ -193,13 +193,13 @@ class BuyTicket:
             for item in get_book_info:
                 try:
                     max_people += int(item["maxPeople"])
-                    log = f'时间: {buy_date + " " + item["beginTime"]}, 票数: {max_people}, 状态: {"不能购买" if max_people == 0 else "可以购买"}'
+                    log = f'时间: {buy_date + " " + item["beginTime"]}, 票数: {max_people}, 状态: {"不能购买" if max_people > self.max else "正在购买"}'
                     if max_people > self.max:
                         self.save_log('info', log)
                         self.buy_ticket(buy_date, item["beginTime"])
                 except:
                     logging.error('当日无车票信息')
-            log = f'时间: {buy_date}, 票数: {max_people}, 状态: {"不能购买" if max_people == 0 else "正在购买"}'
+            log = f'时间: {buy_date}, 票数: {max_people}, 状态: {"不能购买" if max_people == 0 else "可以购买"}'
             self.save_log('info', log)
 
     def buy_ticket(self, begin_date, begin_time):
