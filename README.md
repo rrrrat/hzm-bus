@@ -4,6 +4,7 @@
 支持运行多个程序同时抢票(需同一个数据库), 提高成功率
 实测非周二，10位乘客中4位。
 周二本脚本无效, 滑块验证可参考 https://github.com/Algortex/hzm-goldenbus 自行配置
+购票网站: https://i.hzmbus.com/
 ```
 ## 部署
 ### 0x01 准备 | 难度 1-5
