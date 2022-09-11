@@ -236,7 +236,7 @@ class BuyTicket:
             try:
                 if len(code) != 4:
                     continue
-                code = int(code)
+                int(code)
                 break
             except:
                 continue
