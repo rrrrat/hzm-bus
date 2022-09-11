@@ -232,12 +232,7 @@ class BuyTicket:
                           'Chrome/103.0.0.0 Safari/537.36'}
         while True:
             a = self.session.get(buy_url, headers=headers)
-            with open('./code_img_data.png', 'wb') as fp:
-                fp.write(a.content)
-            ocr = ddddocr.DdddOcr()
-            with open('./code_img_data.png', 'rb') as f:
-                code_bytes = f.read()
-            code = ocr.classification(code_bytes)
+            code = ocr.classification(a.content)
             try:
                 if len(code) != 4:
                     continue
