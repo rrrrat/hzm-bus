@@ -195,7 +195,7 @@ class BuyTicket:
                     max_people += int(item["maxPeople"])
                     log = f'时间: {buy_date + " " + item["beginTime"]}, 票数: {max_people}, 状态: {"不能购买" if max_people > self.max else "正在购买"}'
                     if max_people > self.max:
-                        self.save_log('info', log)
+                        # self.save_log('info', log)
                         self.buy_ticket(buy_date, item["beginTime"])
                 except:
                     logging.error('当日无车票信息')
@@ -232,6 +232,7 @@ class BuyTicket:
                           'Chrome/103.0.0.0 Safari/537.36'}
         while True:
             a = self.session.get(buy_url, headers=headers)
+            ocr = ddddocr.DdddOcr()
             code = ocr.classification(a.content)
             try:
                 if len(code) != 4:
